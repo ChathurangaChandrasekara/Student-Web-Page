@@ -8,26 +8,32 @@
         <th>
             @Html.DisplayNameFor(model => model.DepartmentName)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.FacultyId)
+            @Html.DisplayNameFor(item => item.Faculty.FacultyName)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FacultyId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DepartmentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DepartmentId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty.FacultyName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DepartmentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+

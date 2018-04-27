@@ -1,9 +1,9 @@
 ﻿@model University.Models.Department
 
-@using (Html.BeginForm("Create","Department",FormMethod.Post)) 
+@using (Html.BeginForm("Create", "Department", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Department</h4>
         <hr />
@@ -19,7 +19,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FacultyId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FacultyId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("FacultyId", new List<SelectListItem> {
+            new SelectListItem {Text = "Applied Sciences", Value = "1"},
+            new SelectListItem {Text = "Social Sciences & Languages", Value = "2"},
+            new SelectListItem {Text = "Management Studies", Value = "3"},
+            new SelectListItem {Text = "Geomatics", Value = "4"},
+            new SelectListItem {Text = "Agricultural Sciences", Value = "5"}
+
+         }, "Select Faculty")
                 @Html.ValidationMessageFor(model => model.FacultyId, "", new { @class = "text-danger" })
             </div>
         </div>

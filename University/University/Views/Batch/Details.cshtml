@@ -1,0 +1,36 @@
+﻿@model University.Models.Batch
+
+<div>
+    <h4>Batch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BatchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BatchName)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.FacultyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacultyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentId)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BatchId }) |
+    @Html.ActionLink("Back to List", "BatchList")
+</p>

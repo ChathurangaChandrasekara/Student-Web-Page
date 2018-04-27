@@ -14,7 +14,28 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult DepartmentList()
         {
-            return View(db.Departments.ToList());
+            List<Department> listdepartmet = new List<Department>();
+           
+
+            foreach (var item in db.Departments.ToList())
+            {
+                Department obj = new Department();
+
+                obj.DepartmentId = item.DepartmentId;
+                obj.DepartmentName = item.DepartmentName;
+                obj.FacultyId = item.FacultyId;
+
+                Faculty faculty = new Faculty();
+                faculty.FacultyId = item.FacultyId;
+
+                faculty.FacultyName = db.Facultys.Where(x => x.FacultyId == item.FacultyId).Select(x => x.FacultyName).FirstOrDefault();
+
+                obj.Faculty = faculty;
+
+                listdepartmet.Add(obj);
+            }
+            
+            return View(listdepartmet);
         }
 
         [HttpPost]
@@ -33,7 +54,7 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-
+            ViewBag.Facultys = new SelectList(db.Facultys, "FacultyId", "FacultyName");
             return View();
         }
         [HttpPost]
@@ -93,6 +114,12 @@ namespace University.Controllers
                 return RedirectToAction("DepartmentList","Department");
             }
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            return View(db.Departments.Where(x => x.DepartmentId == id).FirstOrDefault()); 
         }
     }
 }

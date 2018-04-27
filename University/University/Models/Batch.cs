@@ -10,10 +10,10 @@ namespace University.Models
         public int BatchId { get; set; }
         public string BatchName { get; set; }
 
-        public Faculty Faculty;
-        public int FacultyId { get; set; }
+        //public Faculty Faculty;
+        //public int FacultyId { get; set; }
 
-        public Department department;
-        public int DepartmentId { get; set; }
+        //public Department department;
+        //public int DepartmentId { get; set; }
     }
 }

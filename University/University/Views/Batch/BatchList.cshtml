@@ -1,0 +1,53 @@
+﻿@model IEnumerable<University.Models.Batch>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BatchName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.FacultyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(item => item.Faculty.FacultyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(item => item.department.DepartmentName)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.FacultyId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty.FacultyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.department.DepartmentName)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BatchId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BatchId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BatchId })
+        </td>
+    </tr>
+        
+}
+
+</table>
