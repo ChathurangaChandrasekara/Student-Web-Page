@@ -8,7 +8,7 @@ namespace University.Models
 {
     public class User
     {
-        [Required]
+        
         public int UserId { get; set; }
 
         [Display(Name= "First Name")]
@@ -22,6 +22,7 @@ namespace University.Models
         [Display(Name ="University Card")]
         public string UniversityCard { get; set; }
 
+
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
@@ -33,15 +34,20 @@ namespace University.Models
         public int EPNumber { get; set; }
 
         public Faculty Faculty;
+        [Required]
+        [Display(Name = "Faculty Name")]
         public int FacultyId { get; set; }
         public int FacultyName { get; set; }
 
+        [Required]
         public Department Department;
-
+        [Display(Name = "Department Name")]
         public int DepartmentId { get; set; }
         public int DepartmentName { get; set; }
 
+        [Required]
         public Batch Batch;
+        [Display(Name = "Batch Name")]
         public int BatchId { get; set; }
         public int BatchName { get; set; }
 

@@ -16,7 +16,7 @@ namespace University
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Batch", action = "BatchList", id = UrlParameter.Optional }
+                defaults: new { controller = "User", action = "UserList", id = UrlParameter.Optional }
             );
         }
     }
