@@ -1,7 +1,6 @@
 USE [UniversityDb]
 GO
 
-
 INSERT INTO [dbo].[Batches]
            ([BatchName])
      VALUES
@@ -102,7 +101,6 @@ INSERT INTO [dbo].[Batches]
            ([BatchName])
      VALUES
            ('2017/2018')
-
 
 GO
 

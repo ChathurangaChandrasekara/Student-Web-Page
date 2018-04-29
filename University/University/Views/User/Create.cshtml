@@ -1,9 +1,9 @@
 ﻿@model University.Models.User
 
-@using (Html.BeginForm("Create","User",FormMethod.Post)) 
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
@@ -81,94 +81,35 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FacultyId,"Faculty", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FacultyId, "Faculty", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("FacultyId", new List<SelectListItem> {
-new SelectListItem {Text = "Applied Sciences", Value = "1"},
-new SelectListItem {Text = "Social Sciences & Languages", Value = "2"},
-new SelectListItem {Text = "Management Studies", Value = "3"},
-new SelectListItem {Text = "Geomatics", Value = "4"},
-new SelectListItem {Text = "Agricultural Sciences", Value = "5"}
-
-}, "Select Faculty")
+                @Html.DropDownList("Facultys", "Select Faculty")
                 @Html.ValidationMessageFor(model => model.FacultyId, "", new { @class = "text-danger" })
             </div>
         </div>
 
-       
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("DepartmentId", new List<SelectListItem> {
-
-        new SelectListItem {Text = "Computing & Information Systems" , Value = "1"},
-        new SelectListItem {Text = "Natural Resources", Value = "2"},
-        new SelectListItem {Text = "Sport Sciences & Technology", Value = "3"},
-        new SelectListItem {Text = "Food Sciences & Technology", Value = "4"},
-        new SelectListItem {Text = "Physical Sciences & Technology", Value = "5"},
-        new SelectListItem {Text = "English Language Teaching" , Value = "6"},
-        new SelectListItem {Text = "Geography & Environmental Management" , Value = "7"},
-        new SelectListItem {Text = "Languages" , Value = "8"},
-        new SelectListItem {Text = "Social Sciences" , Value = "9"},
-        new SelectListItem {Text = "Economic & Statistics" , Value = "10"},
-        new SelectListItem {Text = "Accountancy & Finance", Value = "11"},
-        new SelectListItem {Text = "Business Management" , Value = "12"},
-        new SelectListItem {Text = "Marketing Management" , Value = "13"},
-        new SelectListItem {Text = "Tourism Management" , Value = "14"},
-        new SelectListItem {Text = "Remote Sensing & GIS" , Value = "15"},
-        new SelectListItem {Text = "Surveying & Geodesy" , Value = "16"},
-        new SelectListItem {Text = "Agribusiness Management" , Value = "17"},
-        new SelectListItem {Text = "Export Agriculture" , Value = "18"},
-        new SelectListItem {Text = "Livestock Production" , Value = "19"},
-
-
-        //new SelectListItem {Text = "" , Value = ""},
-        //new SelectListItem {Text = "" , Value = ""},
-        //new SelectListItem {Text = "" , Value = ""},
-
-
-
-        }, "Select Department")
+                @Html.DropDownList("Departments", "Select Department")
                 @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
             </div>
         </div>
 
-     
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.BatchId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("FacultyId", new List<SelectListItem> {
-               new SelectListItem {Text = "1998/1999" , Value = "1"},
-               new SelectListItem {Text = "1999/2000" , Value = "2"},
-               new SelectListItem {Text = "2000/2001" , Value = "3"},
-               new SelectListItem {Text = "2001/2002" , Value = "4"},
-               new SelectListItem {Text = "2002/2003" , Value = "5"},
-               new SelectListItem {Text = "2003/2004" , Value = "6"},
-               new SelectListItem {Text = "2004/2005" , Value = "7"},
-               new SelectListItem {Text = "2005/2006" , Value = "8"},
-               new SelectListItem {Text = "2006/2007" , Value = "9"},
-               new SelectListItem {Text = "2007/2008" , Value = "10"},
-               new SelectListItem {Text = "2008/2009" , Value = "11"},
-               new SelectListItem {Text = "2009/2010" , Value = "12"},
-               new SelectListItem {Text = "2012/2011" , Value = "13"},
-               new SelectListItem {Text = "2011/2012" , Value = "14"},
-               new SelectListItem {Text = "2012/2013" , Value = "15"},
-               new SelectListItem {Text = "2013/2014" , Value = "16"},
-               new SelectListItem {Text = "2014/2015" , Value = "17"},
-               new SelectListItem {Text = "2015/2016" , Value = "18"},
-               new SelectListItem {Text = "2016/2017" , Value = "19"},
-               new SelectListItem {Text = "2017/2018" , Value = "20"},
-               
-
-           }, "Select Batch")
+                @Html.DropDownList("Batchs", "Select Batch")
                 @Html.ValidationMessageFor(model => model.BatchId, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        
-       
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -181,3 +122,74 @@ new SelectListItem {Text = "Agricultural Sciences", Value = "5"}
 <div>
     @Html.ActionLink("Back to List", "UserList")
 </div>
+
+
+
+@*new List<SelectListItem> {
+
+    new SelectListItem {Text = "Computing & Information Systems" , Value = "1"},
+    new SelectListItem {Text = "Natural Resources", Value = "2"},
+    new SelectListItem {Text = "Sport Sciences & Technology", Value = "3"},
+    new SelectListItem {Text = "Food Sciences & Technology", Value = "4"},
+    new SelectListItem {Text = "Physical Sciences & Technology", Value = "5"},
+    new SelectListItem {Text = "English Language Teaching" , Value = "6"},
+    new SelectListItem {Text = "Geography & Environmental Management" , Value = "7"},
+    new SelectListItem {Text = "Languages" , Value = "8"},
+    new SelectListItem {Text = "Social Sciences" , Value = "9"},
+    new SelectListItem {Text = "Economic & Statistics" , Value = "10"},
+    new SelectListItem {Text = "Accountancy & Finance", Value = "11"},
+    new SelectListItem {Text = "Business Management" , Value = "12"},
+    new SelectListItem {Text = "Marketing Management" , Value = "13"},
+    new SelectListItem {Text = "Tourism Management" , Value = "14"},
+    new SelectListItem {Text = "Remote Sensing & GIS" , Value = "15"},
+    new SelectListItem {Text = "Surveying & Geodesy" , Value = "16"},
+    new SelectListItem {Text = "Agribusiness Management" , Value = "17"},
+    new SelectListItem {Text = "Export Agriculture" , Value = "18"},
+    new SelectListItem {Text = "Livestock Production" , Value = "19"},
+
+
+    //new SelectListItem {Text = "" , Value = ""},
+    //new SelectListItem {Text = "" , Value = ""},
+    //new SelectListItem {Text = "" , Value = ""},
+
+
+
+    },*@
+
+
+@*new List<SelectListItem>
+    {
+    new SelectListItem {Text = "1998/1999" , Value = "1"},
+    new SelectListItem {Text = "1999/2000" , Value = "2"},
+    new SelectListItem {Text = "2000/2001" , Value = "3"},
+    new SelectListItem {Text = "2001/2002" , Value = "4"},
+    new SelectListItem {Text = "2002/2003" , Value = "5"},
+    new SelectListItem {Text = "2003/2004" , Value = "6"},
+    new SelectListItem {Text = "2004/2005" , Value = "7"},
+    new SelectListItem {Text = "2005/2006" , Value = "8"},
+    new SelectListItem {Text = "2006/2007" , Value = "9"},
+    new SelectListItem {Text = "2007/2008" , Value = "10"},
+    new SelectListItem {Text = "2008/2009" , Value = "11"},
+    new SelectListItem {Text = "2009/2010" , Value = "12"},
+    new SelectListItem {Text = "2012/2011" , Value = "13"},
+    new SelectListItem {Text = "2011/2012" , Value = "14"},
+    new SelectListItem {Text = "2012/2013" , Value = "15"},
+    new SelectListItem {Text = "2013/2014" , Value = "16"},
+    new SelectListItem {Text = "2014/2015" , Value = "17"},
+    new SelectListItem {Text = "2015/2016" , Value = "18"},
+    new SelectListItem {Text = "2016/2017" , Value = "19"},
+    new SelectListItem {Text = "2017/2018" , Value = "20"},
+
+
+    },*@
+
+
+ @*new List<SelectListItem>
+    {
+    new SelectListItem {Text = "Applied Sciences", Value = "1"},
+    new SelectListItem {Text = "Social Sciences & Languages", Value = "2"},
+    new SelectListItem {Text = "Management Studies", Value = "3"},
+    new SelectListItem {Text = "Geomatics", Value = "4"},
+    new SelectListItem {Text = "Agricultural Sciences", Value = "5"}
+
+    },*@

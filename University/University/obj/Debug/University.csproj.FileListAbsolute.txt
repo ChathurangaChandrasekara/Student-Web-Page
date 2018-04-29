@@ -134,4 +134,3 @@ E:\GIT\Student-Web-Page\University\University\bin\Microsoft.AI.Web.xml
 E:\GIT\Student-Web-Page\University\University\obj\Debug\University.csproj.CoreCompileInputs.cache
 E:\GIT\Student-Web-Page\University\University\obj\Debug\University.dll
 E:\GIT\Student-Web-Page\University\University\obj\Debug\University.pdb
-E:\GIT\Student-Web-Page\University\University\obj\Debug\University.csprojResolveAssemblyReference.cache

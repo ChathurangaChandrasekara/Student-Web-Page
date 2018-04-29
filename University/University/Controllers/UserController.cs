@@ -56,6 +56,9 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Facultys = new SelectList(db.Facultys, "FacultyId", "FacultyName");
+            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.Batchs = new SelectList(db.Batchs, "BatchId", "BatchName");
 
             return View();
         }
@@ -63,6 +66,8 @@ namespace University.Controllers
         [HttpPost]
         public ActionResult Create(User model)
         {
+            
+
             if (ModelState.IsValid)
             {
                 db.Users.Add(model);

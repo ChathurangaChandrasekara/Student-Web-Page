@@ -115,7 +115,6 @@ INSERT INTO [dbo].[Departments]
      VALUES
            ('Livestock Production','5')
 
-
 GO
 
 
