@@ -10,6 +10,8 @@ namespace University.Models
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
 
+      
+
         public Faculty Faculty;
         public int FacultyId { get; set; }
     }

@@ -219,10 +219,11 @@
     <Content Include="Views\Batch\Edit.cshtml" />
     <Content Include="Views\Batch\Details.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\userlist.cshtml" />
+    <Content Include="Views\User\UserList.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\Batch\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

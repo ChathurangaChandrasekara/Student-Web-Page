@@ -3,7 +3,7 @@
 @using (Html.BeginForm("Create", "User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+<div style="font-family:Arial; background-color:burlywood; ">
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
@@ -117,11 +117,14 @@
             </div>
         </div>
     </div>
+
+</div>
 }
 
 <div>
     @Html.ActionLink("Back to List", "UserList")
 </div>
+        
 
 
 

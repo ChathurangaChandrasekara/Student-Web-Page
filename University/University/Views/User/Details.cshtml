@@ -1,6 +1,5 @@
 ﻿@model University.Models.User
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <div style="font-family:Arial; background-color:burlywood; ">
         <h4>User</h4>
@@ -78,13 +77,7 @@
                 @Html.DisplayFor(model => model.EPNumber)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.FacultyId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.FacultyId)
-            </dd>
+            
 
             <dt>
                 @Html.DisplayNameFor(model => model.FacultyName)
@@ -94,13 +87,7 @@
                 @Html.DisplayFor(model => model.FacultyName)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DepartmentId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.DepartmentId)
-            </dd>
+           
 
             <dt>
                 @Html.DisplayNameFor(model => model.DepartmentName)
@@ -110,13 +97,7 @@
                 @Html.DisplayFor(model => model.DepartmentName)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.BatchId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.BatchId)
-            </dd>
+           
 
             <dt>
                 @Html.DisplayNameFor(model => model.BatchName)
@@ -126,24 +107,13 @@
                 @Html.DisplayFor(model => model.BatchName)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Type)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Type)
-            </dd>
+           
 
         </dl>
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "UserList")
-            </div>
-        }
-        </div>
+        
     </div>
+    </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Back to List", "UserList")
+</p>

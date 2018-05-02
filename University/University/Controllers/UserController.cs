@@ -34,6 +34,29 @@ namespace University.Controllers
                 obj.BatchId = item.BatchId;
                 obj.Address = item.Address;
 
+                Faculty faculty = new Faculty();
+                faculty.FacultyId = item.FacultyId;
+
+                faculty.FacultyName = db.Facultys.Where(x => x.FacultyId == item.FacultyId).Select(x => x.FacultyName).FirstOrDefault();
+
+                obj.Faculty = faculty;
+
+                Department department = new Department();
+                department.DepartmentId = item.DepartmentId;
+
+                department.DepartmentName = db.Departments.Where(x => x.DepartmentId == item.FacultyId).Select(x => x.DepartmentName).FirstOrDefault();
+
+                obj.Department = department;
+
+
+                Batch batch = new Batch();
+                batch.BatchId = item.BatchId;
+
+                batch.BatchName = db.Batchs.Where(x => x.BatchId == item.BatchId).Select(x => x.BatchName).FirstOrDefault();
+
+                obj.Batch = batch;
+
+
                 listuser.Add(obj);
 
             }
@@ -54,10 +77,17 @@ namespace University.Controllers
         }
 
         [HttpGet]
+        public ActionResult Details(int id)
+        {
+            return View(db.Users.Where(x => x.UserId == id).FirstOrDefault());
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
+            
             ViewBag.Facultys = new SelectList(db.Facultys, "FacultyId", "FacultyName");
-            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.Departments = new SelectList(db.Departments , "DepartmentId", "DepartmentName");
             ViewBag.Batchs = new SelectList(db.Batchs, "BatchId", "BatchName");
 
             return View();
@@ -81,6 +111,11 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            ViewBag.Facultys = new SelectList(db.Facultys, "FacultyId", "FacultyName");
+            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.Batchs = new SelectList(db.Batchs, "BatchId", "BatchName");
+
+
             return View(db.Users.Where(x => x.UserId == id).FirstOrDefault());
         }
 
