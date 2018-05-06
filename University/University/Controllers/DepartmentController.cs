@@ -32,7 +32,7 @@ namespace University.Controllers
 
                 obj.Faculty = faculty;
 
-                listdepartmet.Add(obj);
+                listdepartmet.Add(obj); 
             }
             
             return View(listdepartmet);
@@ -71,7 +71,9 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View(db.Departments.Where(x=> x.DepartmentId == id).FirstOrDefault());
+            Department depa = db.Departments.Where(x => x.DepartmentId == id).FirstOrDefault();
+            ViewBag.Facultys = new SelectList(db.Facultys, "FacultyId", "FacultyName");
+            return View(depa);
         }
 
         [HttpPost]
@@ -96,7 +98,11 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View(db.Departments.Where(x=> x.DepartmentId== id).FirstOrDefault());
+            Department department = db.Departments.Where(x => x.DepartmentId == id).FirstOrDefault();
+            Faculty editfaculty = new Faculty();
+            editfaculty = db.Facultys.Where(x => x.FacultyId == department.FacultyId).FirstOrDefault();
+            department.FacultyName = editfaculty.FacultyName;
+            return View(department);
         }
 
         [HttpPost]
@@ -119,7 +125,13 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            return View(db.Departments.Where(x => x.DepartmentId == id).FirstOrDefault()); 
+            Department department = db.Departments.Where(x => x.DepartmentId == id).FirstOrDefault();
+
+            Faculty editfaculty = new Faculty();
+            editfaculty = db.Facultys.Where(x=> x.FacultyId== department.FacultyId).FirstOrDefault();
+            department.FacultyName= editfaculty.FacultyName;
+            
+            return View(department); 
         }
     }
 }

@@ -35,21 +35,24 @@ namespace University.Models
 
         public Faculty Faculty;
         [Required]
-        [Display(Name = "Faculty Name")]
+        
         public int FacultyId { get; set; }
-        public int FacultyName { get; set; }
+        [Display(Name = "Faculty Name")]
+        public string FacultyName { get; set; }
 
         [Required]
         public Department Department;
-        [Display(Name = "Department Name")]
+        
         public int DepartmentId { get; set; }
-        public int DepartmentName { get; set; }
+        [Display(Name = "Department Name")]
+        public string DepartmentName { get; set; }
 
         [Required]
         public Batch Batch;
-        [Display(Name = "Batch Name")]
+        
         public int BatchId { get; set; }
-        public int BatchName { get; set; }
+        [Display(Name = "Batch Name")]
+        public string BatchName { get; set; }
 
         public string Type { get; set; }
     }

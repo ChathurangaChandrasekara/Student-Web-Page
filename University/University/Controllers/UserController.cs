@@ -76,11 +76,7 @@ namespace University.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-            return View(db.Users.Where(x => x.UserId == id).FirstOrDefault());
-        }
+        
 
         [HttpGet]
         public ActionResult Create()
@@ -103,7 +99,7 @@ namespace University.Controllers
                 db.Users.Add(model);
                 db.SaveChanges();
 
-                return RedirectToAction("UserList", "User");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -178,6 +174,28 @@ namespace University.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            User user = new User();
+            user = db.Users.Where(x => x.UserId == id).FirstOrDefault();
+
+            Batch batch = new Batch();
+            batch = db.Batchs.Where(x => x.BatchId == user.BatchId).FirstOrDefault();
+            user.BatchName = batch.BatchName;
+
+            Department department = new Department();
+            department = db.Departments.Where(x => x.DepartmentId == user.DepartmentId).FirstOrDefault();
+            user.DepartmentName = department.DepartmentName;
+
+            Faculty faculty = new Faculty();
+            faculty = db.Facultys.Where(x => x.FacultyId == user.FacultyId).FirstOrDefault();
+            user.FacultyName = faculty.FacultyName;
+
+
+            return View(user);
         }
 
 
