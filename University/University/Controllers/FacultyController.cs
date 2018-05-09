@@ -45,7 +45,7 @@ namespace University.Controllers
         [HttpPost]
         public ActionResult Create(Faculty model)
         {
-            db.Facultys.Add(model);
+             db.Facultys.Add(model);
             db.SaveChanges();
             return RedirectToAction("FacultyList","Faculty");
         }

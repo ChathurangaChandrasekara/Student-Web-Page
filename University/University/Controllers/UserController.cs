@@ -14,66 +14,81 @@ namespace University.Controllers
         [HttpGet]
         public ActionResult UserList()
         {
-            List<User> listuser = new List<User>();
+            User UserAccess = new User();
+            if (UserAccess.Type == "Admin")
+            { 
 
-            foreach (var item in db.Users.ToList())
-            {
-                User obj = new User();
-                obj.FirstName = item.FirstName;
-                obj.LastName = item.LastName;
-                obj.PhoneNumber = item.PhoneNumber;
-                obj.UniversityCard = item.UniversityCard;
-                obj.UserId = item.UserId;
-                obj.UserName = item.UserName;
-                obj.UserPassword = item.UserPassword;
-                obj.FacultyId = item.FacultyId;
-                obj.FirstName = item.FirstName;
-                obj.EPNumber = item.EPNumber;
-                obj.Email = item.Email;
-                obj.DepartmentId = item.DepartmentId;
-                obj.BatchId = item.BatchId;
-                obj.Address = item.Address;
+                List<User> listuser = new List<User>();
 
-                Faculty faculty = new Faculty();
-                faculty.FacultyId = item.FacultyId;
+                foreach (var item in db.Users.ToList())
+                {
+                    User obj = new User();
+                    obj.FirstName = item.FirstName;
+                    obj.LastName = item.LastName;
+                    obj.PhoneNumber = item.PhoneNumber;
+                    obj.UniversityCard = item.UniversityCard;
+                    obj.UserId = item.UserId;
+                    obj.UserName = item.UserName;
+                    obj.UserPassword = item.UserPassword;
+                    obj.FacultyId = item.FacultyId;
+                    obj.FirstName = item.FirstName;
+                    obj.EPNumber = item.EPNumber;
+                    obj.Email = item.Email;
+                    obj.DepartmentId = item.DepartmentId;
+                    obj.BatchId = item.BatchId;
+                    obj.Address = item.Address;
 
-                faculty.FacultyName = db.Facultys.Where(x => x.FacultyId == item.FacultyId).Select(x => x.FacultyName).FirstOrDefault();
+                    Faculty faculty = new Faculty();
+                    faculty.FacultyId = item.FacultyId;
 
-                obj.Faculty = faculty;
+                    faculty.FacultyName = db.Facultys.Where(x => x.FacultyId == item.FacultyId).Select(x => x.FacultyName).FirstOrDefault();
 
-                Department department = new Department();
-                department.DepartmentId = item.DepartmentId;
+                    obj.Faculty = faculty;
 
-                department.DepartmentName = db.Departments.Where(x => x.DepartmentId == item.FacultyId).Select(x => x.DepartmentName).FirstOrDefault();
+                    Department department = new Department();
+                    department.DepartmentId = item.DepartmentId;
 
-                obj.Department = department;
+                    department.DepartmentName = db.Departments.Where(x => x.DepartmentId == item.FacultyId).Select(x => x.DepartmentName).FirstOrDefault();
 
-
-                Batch batch = new Batch();
-                batch.BatchId = item.BatchId;
-
-                batch.BatchName = db.Batchs.Where(x => x.BatchId == item.BatchId).Select(x => x.BatchName).FirstOrDefault();
-
-                obj.Batch = batch;
+                    obj.Department = department;
 
 
-                listuser.Add(obj);
+                    Batch batch = new Batch();
+                    batch.BatchId = item.BatchId;
 
+                    batch.BatchName = db.Batchs.Where(x => x.BatchId == item.BatchId).Select(x => x.BatchName).FirstOrDefault();
+
+                    obj.Batch = batch;
+
+
+                    listuser.Add(obj);
+
+                }
+                return View(listuser);
             }
-            return View(listuser);
+            return View();
         }
 
 
         [HttpPost]
         public ActionResult UserList(User model)
         {
+
             if (model.FirstName == "")
             {
                 return RedirectToAction("UserList");
             }
+            else
+            {
+                User UserAccess = new User();
+                if (UserAccess.Type == "Admin")
+                {
+                    return View(db.Users.Where(x => x.UserName.Contains(model.UserName)).ToList());
+                }
 
-            return View(db.Users.Where(x => x.UserName.Contains(model.UserName)).ToList());
 
+                return View(db.Users.Where(x => x.UserName== model.UserName).Single());
+            }
         }
 
         
@@ -99,6 +114,12 @@ namespace University.Controllers
                 db.Users.Add(model);
                 db.SaveChanges();
 
+                User UserAccess = new User();
+                if (UserAccess.Type == "Admin")
+                {
+                    return RedirectToAction("UserList","User");
+                }
+                else
                 return RedirectToAction("Index", "Home");
             }
             return View();
@@ -118,34 +139,41 @@ namespace University.Controllers
         [HttpPost]
         public ActionResult Edit(User model)
         {
-            if (ModelState.IsValid)
+
+            User UserAccess = new User();
+            if (UserAccess.Type == "Admin")
             {
-                User user = new User();
 
-                user = db.Users.Where(x=> x.UserId == model.UserId).FirstOrDefault();
 
-                user.Address = model.Address;
-                user.BatchId = model.BatchId;
-                user.BatchName = model.BatchName;
-                user.DepartmentId = model.DepartmentId;
-                user.DepartmentName = model.DepartmentName;
-                user.Email = model.Email;
-                user.EPNumber = model.EPNumber;
-                user.FacultyId = model.FacultyId;
-                user.FacultyName = model.FacultyName;
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.PhoneNumber = model.PhoneNumber;
-                user.UniversityCard = model.UniversityCard;
-                user.UserId = model.UserId;
-                user.UserName = model.UserName;
-                user.UserPassword = model.UserPassword;
+                if (ModelState.IsValid)
+                {
+                    User user = new User();
 
-                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                    user = db.Users.Where(x => x.UserId == model.UserId).FirstOrDefault();
 
-                return RedirectToAction("UserList", "User");
+                    user.Address = model.Address;
+                    user.BatchId = model.BatchId;
+                    user.BatchName = model.BatchName;
+                    user.DepartmentId = model.DepartmentId;
+                    user.DepartmentName = model.DepartmentName;
+                    user.Email = model.Email;
+                    user.EPNumber = model.EPNumber;
+                    user.FacultyId = model.FacultyId;
+                    user.FacultyName = model.FacultyName;
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.PhoneNumber = model.PhoneNumber;
+                    user.UniversityCard = model.UniversityCard;
+                    user.UserId = model.UserId;
+                    user.UserName = model.UserName;
+                    user.UserPassword = model.UserPassword;
 
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("UserList", "User");
+
+                }
             }
             return View();
         }
@@ -162,15 +190,21 @@ namespace University.Controllers
        [ActionName("Delete")]
        public ActionResult Deleteobj(int id)
         {
-            if (ModelState.IsValid)
+            User UserAccess = new User();
+            if (UserAccess.Type=="Admin")
             {
-                User user = new Models.User();
-                user = db.Users.Where(x => x.UserId == id).FirstOrDefault();
 
-                db.Entry(user).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
 
-                return RedirectToAction("UserList", "User");
+                if (ModelState.IsValid)
+                {
+                    User user = new Models.User();
+                    user = db.Users.Where(x => x.UserId == id).FirstOrDefault();
+
+                    db.Entry(user).State = System.Data.Entity.EntityState.Deleted;
+                    db.SaveChanges();
+
+                    return RedirectToAction("UserList", "User");
+                }
             }
 
             return View();
